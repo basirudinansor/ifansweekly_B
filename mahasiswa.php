@@ -1,3 +1,12 @@
+<?php
+
+    require "fungsi.php";
+    $qmahasiswa = "SELECT * FROM mahasiswa";
+    $mahasiswas = tampildata($qmahasiswa);  /// array isinya data mahasiswa 
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,26 +32,36 @@
     </a>
     <table border="1" cellpadding="10px">
         <tr>
-            <th rowspan="2">No</th>
-            <th rowspan="2">Nama</th>
-            <th rowspan="2">Foto</th>
-            <th colspan="3">Nilai</th>            
-        </tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>NIM</th>
+            <th>Jurusan</th> 
+            <th>Email</th>
+            <th>No. HP</th>   
+            <th>Foto</th>   
+            <th>Aksi</th>     
+        </tr> 
+        <?php 
+            $i = 1;
+            foreach($mahasiswas as $mhs) //// array mahasiswa data mhs
+            {
+        ?>   
         <tr>
-            <!-- <th>Nama</th> -->
-            <th>UTS</th>
-            <th>UAS</th>
-            <th>TUGAS</th>
-            
+            <td align="center"><?= $i ?></td>
+            <td><?= $mhs["nama"] ?></td>
+            <td><?= $mhs["nim"] ?></td>
+            <td><?= $mhs["jurusan"] ?></td>
+            <td><?= $mhs["email"] ?></td>
+            <td><?= $mhs["no_hp"] ?></td>
+            <td><img src="assets/images/<?= $mhs["foto"] ?>" alt="foto" width="60px"></td>  
+            <td>
+                <a href="editdata.php"><button>Edit</button></a> | <a href="deletedata.php"><button>Hapus</button></a>
+            </td>          
         </tr>
-        <tr>
-            <td align="center">1</td>
-            <td>Muhaliman Sudibyo</td>
-            <td><img src="assets/images/muhaliman.png" alt="foto" width="60px"></td>
-            <td align="center">90</td>
-            <td align="center">85</td>
-            <td align="center">40</td>
-        </tr>
+        <?php 
+            $i++;
+            }
+        ?>
     </table>
     <br>
     <hr>
