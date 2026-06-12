@@ -1,3 +1,37 @@
+<?php
+
+    require "fungsi.php";
+
+    if(isset($_POST["kirim"]))
+    {
+
+        /// cek tambah data masuk atau tidak
+        if(tambahdata($_POST) > 0)
+        {
+            echo "<script>
+                    alert('Data Berhasil Ditambahkan!');
+                    window.location.href='mahasiswa.php';
+                 </script>
+                 ";
+        }
+        else
+        {
+             echo "<script>
+                    alert('Data Gagal Ditambahkan!');
+                    window.location.href='mahasiswa.php';
+                 </script>
+                 ";
+        }
+
+    }
+
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,17 +46,17 @@
             <tr>
                 <td><label for="nama">Nama</label></td>
                 <td>:</td>
-                <td><input type="text" id="nama" name="nama" require /></td>
+                <td><input type="text" id="nama" name="asma" required /></td>
             </tr>
             <tr>
                 <td><label for="nim">NIM</label></td>
                 <td>:</td>
-                <td><input type="number" id="nim" name="nim" require /></td>
+                <td><input type="number" id="nim" name="nim" required /></td>
             </tr>
             <tr>
                 <td><label for="jurusan">Jurusan</label></td>
                 <td>:</td>
-                <td><input type="text" id="jurusan" name="jurusan" require /></td>
+                <td><input type="text" id="jurusan" name="prodi" required /></td>
             </tr>
             <tr>
                 <td><label for="email">Email</label></td>
@@ -41,7 +75,7 @@
             </tr>
             <tr>
                 <td colspan="3">
-                    <button type="submit" name="submit">
+                    <button type="submit" name="kirim">
                         Tambah
                     </button>
                 </td>
